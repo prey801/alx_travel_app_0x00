@@ -4,20 +4,20 @@ from .models import Listing, Booking, Review
 
 @admin.register(Listing)
 class ListingAdmin(admin.ModelAdmin):
-    list_display = ['title', 'location', 'price_per_night', 'available']
-    list_filter = ['available', 'location']
-    search_fields = ['title', 'location', 'description']
+    list_display = ['name', 'location', 'price_per_night', 'host']
+    list_filter = ['location', 'created_at']
+    search_fields = ['name', 'location', 'description']
 
 
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):
-    list_display = ['guest_name', 'listing', 'check_in_date', 'check_out_date', 'total_price']
-    list_filter = ['check_in_date', 'check_out_date']
-    search_fields = ['guest_name', 'listing__title']
+    list_display = ['guest', 'listing', 'start_date', 'end_date', 'total_price', 'status']
+    list_filter = ['start_date', 'end_date', 'status']
+    search_fields = ['guest__username', 'listing__name']
 
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ['reviewer_name', 'listing', 'rating']
-    list_filter = ['rating']
-    search_fields = ['reviewer_name', 'listing__title', 'comment']
+    list_display = ['guest', 'listing', 'rating', 'created_at']
+    list_filter = ['rating', 'created_at']
+    search_fields = ['guest__username', 'listing__name', 'comment']
