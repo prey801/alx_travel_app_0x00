@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 from .models import Listing, Booking
-from .serializers import ListingSerializer, BookingSerializer
+from ...serializers import ListingSerializer, BookingSerializer
 
 
 class ListingViewSet(viewsets.ModelViewSet):
