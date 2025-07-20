@@ -1,15 +1,15 @@
-# ALX Travel App 0x00
+# Listings App
 
-A Django REST API application for managing travel listings, bookings, and reviews.
+The **Listings** app is the core component of the ALX Travel App that manages property listings for the travel booking platform. This Django app provides models, serializers, views, and API endpoints for handling property listings, their associated bookings, and reviews.
 
-## Project Overview
+## Overview
 
-This project implements a travel booking system with the following key features:
-- Property listings management
-- Booking system for reservations
-- Review and rating system
-- RESTful API endpoints for data access
-- Database seeding with sample data
+The Listings app handles:
+- **Property Listings**: Create, read, update, and delete property listings
+- **Bookings Management**: Handle reservations for listed properties
+- **Reviews System**: Manage customer reviews and ratings for properties
+- **RESTful API**: Expose endpoints for frontend consumption
+- **Data Management**: Admin interface and database operations
 
 ## Models
 
@@ -38,9 +38,24 @@ Represents a review for a listing.
 
 ## API Endpoints
 
-The application provides REST API endpoints for:
-- Listings management (`/api/listings/`)
-- Bookings management (`/api/bookings/`)
+The Listings app exposes the following REST API endpoints:
+
+### Listings Endpoints
+- `GET /api/listings/` - Retrieve all property listings
+- `POST /api/listings/` - Create a new property listing
+- `GET /api/listings/{id}/` - Retrieve a specific listing
+- `PUT /api/listings/{id}/` - Update a specific listing
+- `PATCH /api/listings/{id}/` - Partially update a listing
+- `DELETE /api/listings/{id}/` - Delete a listing
+
+### Bookings Endpoints
+- `GET /api/bookings/` - Retrieve all bookings
+- `POST /api/bookings/` - Create a new booking
+- `GET /api/bookings/{id}/` - Retrieve a specific booking
+- `PUT /api/bookings/{id}/` - Update a booking
+- `DELETE /api/bookings/{id}/` - Cancel a booking
+
+### Documentation
 - API documentation (`/swagger/` and `/redoc/`)
 
 ## Setup Instructions
@@ -91,26 +106,28 @@ Once the server is running, you can access:
 - ReDoc: `http://localhost:8000/redoc/`
 - Django Admin: `http://localhost:8000/admin/`
 
-## File Structure
+## App Structure
 
 ```
-alx_travel_app_0x00/
-├── alx_travel_app/          # Project configuration
-│   ├── settings.py          # Django settings
-│   ├── urls.py             # Main URL configuration
-│   └── ...
-├── listings/               # Main application
-│   ├── models.py           # Database models
-│   ├── serializers.py      # DRF serializers
-│   ├── views.py            # API views
-│   ├── urls.py             # App URLs
-│   ├── admin.py            # Django admin config
-│   ├── management/
-│   │   └── commands/
-│   │       └── seed.py     # Database seeding command
-│   └── migrations/         # Database migrations
-├── manage.py               # Django management script
-└── README.md              # This file
+listings/                   # Listings Django App
+├── __init__.py            # Python package marker
+├── admin.py               # Django admin configuration
+├── apps.py                # App configuration
+├── models.py              # Database models (Listing, Booking, Review)
+├── serializers.py         # DRF serializers for API data
+├── views.py               # API views and business logic
+├── urls.py                # URL patterns for the app
+├── tests.py               # Unit tests (if any)
+├── management/            # Custom management commands
+│   ├── __init__.py
+│   └── commands/
+│       ├── __init__.py
+│       └── seed.py        # Database seeding command
+├── migrations/            # Database migration files
+│   ├── __init__.py
+│   ├── 0001_initial.py    # Initial migration
+│   └── ...                # Additional migrations
+└── README.md              # This documentation file
 ```
 
 ## Technologies Used
@@ -136,13 +153,20 @@ MYSQL_PORT=3306
 
 ## Features
 
-- ✅ **Database Models**: Comprehensive models for listings, bookings, and reviews
-- ✅ **REST API**: Full CRUD operations via DRF
-- ✅ **Data Serialization**: Proper API data representation
-- ✅ **Database Seeding**: Automated sample data generation
-- ✅ **Admin Interface**: Django admin for data management
-- ✅ **API Documentation**: Swagger/ReDoc integration
-- ✅ **CORS Support**: Cross-origin request handling
+### Core Functionality
+- ✅ **Listing Management**: Full CRUD operations for property listings
+- ✅ **Booking System**: Create and manage reservations for properties
+- ✅ **Review System**: Customer reviews and ratings for listings
+- ✅ **Availability Tracking**: Monitor property availability status
+
+### Technical Features
+- ✅ **REST API**: Full CRUD operations via Django REST Framework
+- ✅ **Data Serialization**: Proper JSON serialization for all models
+- ✅ **Database Relations**: Foreign key relationships between models
+- ✅ **Database Seeding**: Automated sample data generation via management command
+- ✅ **Admin Interface**: Django admin integration for easy data management
+- ✅ **API Documentation**: Auto-generated Swagger/ReDoc documentation
+- ✅ **Input Validation**: Model-level and serializer-level data validation
 
 ## Development
 
